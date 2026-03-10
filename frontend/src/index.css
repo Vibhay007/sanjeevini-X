@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= GLOBAL ================= */
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+  /* Match the deepest black for perfect flow */
+  @apply bg-[#030712] text-white antialiased min-h-screen overflow-x-hidden;
+}
+
+/* ================= NAV FLOW FIX ================= */
+
+/* 1. Remove the bottom margin from the navbar container to pull Header up */
+div.flex.items-center.justify-between.py-4.mb-5 {
+  @apply mb-0 pb-6 border-b-0 !important;
+}
+
+/* 2. Style the "X" specifically through CSS to match the branding */
+span.text-sky-400 {
+  @apply font-black italic text-2xl ml-2 !important;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+}
+
+/* 3. Logo hover rotation */
+.group:hover img.logo-glow {
+  @apply rotate-[360deg] scale-110 !important;
+}
+
+/* ================= HEADER FLOW FIX ================= */
+
+/* 4. Target the main Hero container to sit closer to the nav */
+.bg-gradient-to-br.from-sky-500 {
+  @apply mt-0 rounded-[2.5rem] !important;
+}
+
+/* 5. FIX PHOTO HEIGHT: This makes the photo shorter as requested */
+section img[src*="header_img"],
+div.md\:w-1\/2 img[src*="header_img"] {
+  @apply object-contain !important;
+  max-height: 330px !important; /* Forces the photo to be shorter */
+  width: auto !important;
+  margin-bottom: -20px; /* Pulls it down slightly to sit on the edge */
+}
+
+/* 6. Adjust the glass container around the photo */
+.bg-white\/10.backdrop-blur-md {
+  @apply max-h-fit py-1 px-1 !important;
+}
+
+/* ================= ACTIVE STATE ================= */
+.active li {
+  @apply text-sky-400 font-bold !important;
+}
+
+.active hr {
+  @apply block opacity-100 scale-x-100 bg-sky-400 !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+nav hr {
+  @apply transition-all duration-300 scale-x-0 opacity-0 h-0.5 border-none;
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 0;
+}
